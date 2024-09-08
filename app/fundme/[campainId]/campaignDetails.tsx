@@ -25,12 +25,9 @@ const CampaignDetails = ({
   data: CampaignData;
   refetch: () => void;
 }) => {
-  console.log({ info, data });
 
   const { campainId } = useParams();
-
   const { address } = useAccount();
-
   const { isPending, writeContract, data: hash, error } = useWriteContract({});
 
   const onEndCampaign = () => {
@@ -66,12 +63,9 @@ const CampaignDetails = ({
     if (isTxSuccess) {
       refetch();
       fetchBalance();
-      console.log("refetching");
     }
   }, [isTxSuccess]);
 
-
-  console.log({isTxSuccess})
 
 
   const getStatus = () => {

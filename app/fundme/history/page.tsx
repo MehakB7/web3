@@ -13,8 +13,6 @@ function History() {
   // read the contract to check campaigns
 
   const account = useAccount();
-  console.log("account", account);
-
   const { data, isLoading, error, refetch } = useReadContract({
     address: campaignfactoryAddress,
     abi: campaignFactoryAbi,

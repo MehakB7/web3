@@ -45,8 +45,6 @@ const DonateModel = ({
   const { isPending, writeContract, data: hash } = useWriteContract({});
 
   function onSubmit(data: z.infer<typeof DonationSchema>) {
-    console.log({ data });
-
     writeContract({
       address: address,
       abi: campaignAbi,
@@ -71,8 +69,6 @@ const DonateModel = ({
       setOpen(false);
     }
   }, [isTxSuccess]);
-
-  console.log({isPending, isTxLoading})
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

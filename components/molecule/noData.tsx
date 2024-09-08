@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 
 export const NoData = () => {
-  console.log("No Data Available");
   return (
     <div className="flex flex-col gap-4">
       <Image src={"/no-data.png"} width={200} height={200} alt="No Data" />

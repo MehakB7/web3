@@ -26,10 +26,7 @@ const Campaign = () => {
     address: campainId as Address,
   });
 
-  console.log({ response });
-
   const getData = async () => {
-    console.log({ cid });
     try {
       const data = await pinata.gateways.get(cid as string);
       if (data.data) {
