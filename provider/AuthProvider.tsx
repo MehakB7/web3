@@ -9,9 +9,6 @@ const AuthProvider = ({children}:{children: ReactNode}) => {
    const {isConnected} = useAccount(); 
    const chain = useChainId();
 
-   console.log({chain})
-
-
    if(!isConnected){
     return (
     <div className="flex flex-col items-center justify-center gap-3" style={{height:"400px"}}>
