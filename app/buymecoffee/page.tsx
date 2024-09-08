@@ -21,7 +21,6 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from "wagmi";
-import { coffeeAbi, coffeeAddress } from "@/web3/contracts/abi/buymecoffee";
 import { useEffect } from "react";
 import { toast } from "@/components/ui/use-toast";
 import {

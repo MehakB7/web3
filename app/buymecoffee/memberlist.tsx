@@ -1,4 +1,4 @@
-import { coffeeAbi, coffeeAddress } from "@/web3/contracts/abi/buymecoffee";
+import { coffeeAbi } from "@/web3/contracts/abi/buymecoffee";
 import React from "react";
 import { Abi, Address } from "viem";
 import { useReadContracts } from "wagmi";
