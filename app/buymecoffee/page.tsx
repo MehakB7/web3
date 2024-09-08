@@ -71,9 +71,7 @@ const BuyMeCoffeeFactory = () => {
     useWaitForTransactionReceipt({
       hash: hash,
     });
-
-  console.log(isTxSuccess, isTxLoading, hash);
-
+    
   useEffect(() => {
     if (isTxSuccess) {
       toast({

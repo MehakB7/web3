@@ -24,15 +24,12 @@ const useCampaignList = ({ address }: { address: Address[] }) => {
     allowFailure: true,
   });
 
-  console.log({ data });
 
   const getIpfsData = async (cid: string) => {
     try {
       const { data } = await pinata.gateways.get(cid);
       if (typeof data === "object" && data !== null && !Array.isArray(data)) {
         const { image, title } = data as { image?: string; title?: string };
-
-        console.log(data);
         return {
           image: image || "",
           title: title || "",
@@ -44,8 +41,6 @@ const useCampaignList = ({ address }: { address: Address[] }) => {
       return { image: "", title: "" };
     }
   };
-
-  console.log({ data });
 
   useEffect(() => {
     const createData = async () => {

@@ -8,9 +8,6 @@ import { ExternalLinkIcon } from 'lucide-react';
 
 function CampaignTable({address}: {address: Address[]}) {
    const {data} = useCampaignList({ address: address});
-
-   console.log({data});
-
   return (
     <Table className="border border-input">
     <TableCaption>A list of your campaigns.</TableCaption>

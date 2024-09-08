@@ -58,7 +58,6 @@ const GoFundMe = () => {
   const { writeContract, data: hash, isPending, error ,...rest} = useWriteContract();
 
   const onSubmit = async (data: z.infer<typeof FundMeSchema>) => {
-    console.log(data,imageCid);
     try {
       const info = JSON.stringify({title: data.title, description: data.description, image: imageCid});
       setLoading(true);
@@ -116,7 +115,6 @@ const GoFundMe = () => {
         body: formData,
       });
       const result = await response.json();
-      console.log({result});
       setCid(result?.IpfsHash);
       setLoading(false);
     } catch (e) {
@@ -128,7 +126,7 @@ const GoFundMe = () => {
       { loading &&  <Loader/>}
       <div className="flex flex-col max-w-[500px] justify-center m-auto gap-3">
         <h1 className="text-2xl font-semibold text-center">
-          Let's begin your fundraising journey
+        {" Let's begin your fundraising journey"}
         </h1>
         <Form {...form}>
           <form

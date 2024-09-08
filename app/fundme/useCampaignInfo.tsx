@@ -31,8 +31,6 @@ const useCampaignInfo = ({ address }: { address: Address }) => {
     allowFailure: true,
   });
 
-  console.log("Hey mehak",{data});
-
   const response = {} as CampaignData;
 
   if(data){
