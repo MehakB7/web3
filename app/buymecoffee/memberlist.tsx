@@ -32,13 +32,13 @@ const Memberlist = ({ members }: { members: number }) => {
         <>
           {isLoading && <div>Loading...</div>}
           {data?.map(({ result }, key) => {
-            const [name, message, from, timestamp] = result;
+            const [name, message, from, timestamp] = result as Array<string>;
             return (
               <li
                 className="flex border border-input p-4 gap-3 items-center  relative"
                 key={key}
               >
-                <img src={blo(from)} className="rounded-full" title={from} />
+                <img src={blo(from as Address)} className="rounded-full" title={from} />
                 <div className="flex flex-col gap-1">
                   <h2 className="font-bold">{name}</h2>
                   <h3 className="font-normal"> {message} </h3>
