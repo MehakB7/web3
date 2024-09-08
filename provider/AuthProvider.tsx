@@ -17,13 +17,13 @@ const AuthProvider = ({children}:{children: ReactNode}) => {
     </div>)
    }
 
-  //  if(  chain !== sepolia.id){
-  //   return (
-  //     <div className="flex flex-col items-center justify-center gap-3" style={{height:"400px"}}>
-  //       <Link2OffIcon width={48} height={48}/>
-  //       <p className="text-center text-2xl">Please change to Sepolia network</p>
-  //     </div>)
-  //  }
+   if(  chain !== sepolia.id){
+    return (
+      <div className="flex flex-col items-center justify-center gap-3" style={{height:"400px"}}>
+        <Link2OffIcon width={48} height={48}/>
+        <p className="text-center text-2xl">Please change to Sepolia network</p>
+      </div>)
+   }
 
   return (
     <div>

@@ -61,6 +61,7 @@ export const MemberForm = () => {
             title: "Thank you",
             description: "you are now a member 💝",
           });
+          form.reset();
     }
    
   }, [isTxSuccess]);
