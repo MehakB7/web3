@@ -25,5 +25,10 @@ export const Projects = [
         description: "Start your own Fundm campaign",
         icon:"fundMe" as IconName,
         href:"/fundme",
+    },{
+        name: "My Fundme",
+        description: "My Fundme campaign",
+        icon:"fundMe" as IconName,
+        href:"/fundme/0x13D6c61F836C460f155E56bD0c74c2008560c17F",
     }
 ]
