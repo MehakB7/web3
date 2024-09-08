@@ -52,9 +52,9 @@ const Campaign = () => {
 
   return (
     <AuthProvider>
-    <div className="flex  w-screen gap-8 px-8  ">
+    <div className="flex  w-screen gap-8 px-8  justify-center ">
       {loading && <Loader />}
-      <div className="flex flex-col gap-6 w-full items-center">
+      <div className="flex flex-col gap-6 w-[80%]">
         <h1 className="font-bold text-3xl">{campaingInfo.title}</h1>
         <div className="flex sm:flex-row  flex-col gap-4">
           <div className="w-full sm:w-[50%] h-[400px] gap-4">
