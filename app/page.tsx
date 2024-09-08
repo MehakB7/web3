@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="flex flex-col m-auto gap-4">
       <h1 className="text-3xl font-bold text-center">Web3 sample projects</h1>
-      <div className="flex rounded-md items-center justify-center m-auto w-full gap-4 p-4">
+      <div className="flex rounded-md items-center justify-center m-auto w-full gap-4 p-4 flex-wrap">
         {Projects.map((project, index) => (
           <Link href={project.href} key={index}>
             <li

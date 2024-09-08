@@ -6,8 +6,8 @@ const ACCEPTED_IMAGE_TYPES = [ "image/jpeg", "image/jpg", "image/png", "image/we
 
 export const  FundMeSchema = z.object({
     title: z.string().min(5,{"message":"Title should have atleast 5 characters"}).max(100,{"message":"Title should have atmost 100 characters"}),
-    description: z.string().min(20,{"message":"Message should have atleast 20 characters"}),
-    amount: z.preprocess((val) => Number(val), z.number().gt(5, {message:"Amount should be greater than 5"})),
+    description: z.string().min(20,{"message":"Message should have atleast 20 characters"}).max(300,{"message":"Message should have atmost 200 characters"}),
+    amount: z.preprocess((val: string) => Number(val), z.number().gt(5, {message:"Amount should be greater than 5"})),
     type : z.nativeEnum(CampaignType, {
         required_error: "Please select the Type",
     }),

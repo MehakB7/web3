@@ -18,9 +18,7 @@ import { Address } from "viem";
 import { CoffeeIcon } from "@/components/icons/Coffee";
 
 const BuyMeCoffee = () => {
-
  const address = useAccount();
-
  const params = useParams();
  const contractId = params.contractId;
 
@@ -50,7 +48,6 @@ const BuyMeCoffee = () => {
     functionName: "getMembersCount",
   });
   
-
   useWatchContractEvent({
     address: contractId as Address,
     abi: coffeeAbi,

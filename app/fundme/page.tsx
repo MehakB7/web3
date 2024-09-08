@@ -1,12 +1,11 @@
 "use client";
-import AuthProvider from "@/provider/AuthProvider";
-import React from "react";
+import React, {useState, useRef} from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import AuthProvider from "@/provider/AuthProvider";
 import { Button } from "@/components/ui/button";
 import { differenceInCalendarDays } from "date-fns";
-
 import {
   Form,
   FormControl,
@@ -38,20 +37,18 @@ import { Loader } from "@/components/molecule/loader";
 
 const GoFundMe = () => {
 
-  const [loading, setLoading] = React.useState(false);
-  const [imageCid, setCid] = React.useState("");
+  const [loading, setLoading] = useState(false);
+  const [imageCid, setCid] = useState("");
+  const fileRef = useRef<HTMLInputElement | null>(null);
 
   const form = useForm<z.infer<typeof FundMeSchema>>({
     resolver: zodResolver(FundMeSchema),
     defaultValues: {
-      title: "Mehak need job in web3",
-      description: "Hey there can you please donate",
-      amount: 10,
-      type: CampaignType.FIXED,
+      title: "",
+      description: "",
       image: new File([], ""),
-      endDate:  new Date(
-        new Date().setMonth(new Date().getMonth() + 1)
-      )
+      type: undefined,
+      amount: undefined,
       },
   });
 
@@ -74,6 +71,18 @@ const GoFundMe = () => {
         functionName: "createCampain",
         args: [result.IpfsHash, parseEther(data.amount.toString()), days, parseInt(data.type)],
       });
+
+      form.reset();
+      form.setValue("amount",0 );
+      form.setValue("type", CampaignType.FIXED);
+
+      console.log("inside here", fileRef?.current)
+      if(fileRef?.current){
+        console.log(fileRef.current.value);
+        fileRef.current.value = "";
+      }
+
+
     } catch (e) {
 
     }
@@ -123,7 +132,7 @@ const GoFundMe = () => {
 
   return (
     <AuthProvider>
-      { loading &&  <Loader/>}
+      { loading && isTxLoading &&  <Loader/>}
       <div className="flex flex-col max-w-[500px] justify-center m-auto gap-3">
         <h1 className="text-2xl font-semibold text-center">
         {" Let's begin your fundraising journey"}
@@ -156,7 +165,6 @@ const GoFundMe = () => {
                     <Input
                       placeholder="Enter the Amount"
                       type="number"
-                      pattern="\d*"
                       {...field}
                     />
                   </FormControl>
@@ -174,6 +182,7 @@ const GoFundMe = () => {
                     <Textarea
                       placeholder="What is the fundraiser about"
                       className="vertical"
+                      maxLength={300}
                       {...field}
                     />
                   </FormControl>
@@ -196,8 +205,9 @@ const GoFundMe = () => {
                         field.onChange(
                           e.target.files ? e.target.files[0] : null
                         )
-                      }  
+                      } 
                       }
+                      ref={fileRef}
                       className="file:text-white"
                     />
                   </FormControl>
@@ -215,7 +225,7 @@ const GoFundMe = () => {
                     <RadioGroup
                       onValueChange={field.onChange}
                       className="flex flex-col space-y-1"
-                      defaultValue={field.value}
+                      value={field.value}
                     >
                       {options.map((option, index) => (
                         <FormItem
@@ -257,7 +267,6 @@ const GoFundMe = () => {
                   </FormControl>
                   <FormMessage />
                   <FormDescription>{endDayHelpText}</FormDescription>
-                  <FormMessage />
                 </FormItem>
               )}
             />
